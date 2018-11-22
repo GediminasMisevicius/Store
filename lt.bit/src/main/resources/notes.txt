@@ -1,0 +1,20 @@
+Product p = null;
+Optional<Product> pOpt = ( p == null ? Optional.empty() : Optional.of(p) );
+Optional<Product> pOpt = Optional.ofNullable(p);
+
+Predicate priima viena reiksme (nesvarbu kokia) ir turi grazinti boolean
+v -> true|false
+boolean (T value)
+Consumer priima viena reiksme, bet ja suvartoja ir negrazina nieko
+v -> System.out.println(v);
+void (T value)
+Supplier nepriima nieko, bet grazina
+() -> new Object();
+T ()
+Function turi input ir output
+v -> String.of(v);
+T (O value)
+
+Streamuose Function atitinka .map() operacija;
+.filter() priima Predicate;
+.ifPresent() - Consumer;

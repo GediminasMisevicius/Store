@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="refresh" content="5">
+</head>
+
+<body>
+	<form style="float: left" action="/th/products" method="post">
+		<input type="hidden" name="fid" th:value="${editProduct?.id}" />
+		<input type="text" name="fname" th:value="${editProduct?.name}" /> 
+		<input type="text" name="fprice" th:value="${editProduct?.price}" />
+		<input type="submit" name="fsubmit" />
+	</form>
+	
+	<form style="float: left" action="/th/filter" method="post">
+		<input type="text" name="finame" /> 
+		<input type="text" name="fipricemin" />
+		<input type="text" name="fipricemax" />
+		<input type="submit" name="fisubmit" value="filter" />
+	</form>
+	
+	<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout" />
+    </form>
+
+	<table th:if="${products}" border="1" style="float: right">
+		<th:block th:each="product : ${products}">
+			<tr>
+				<td th:text="${product.name}">...</td>
+				<td th:text="${product.id}">...</td>
+				<td th:text="${product.price}">...</td>
+				<td>
+					<a th:href="'/th/delete/' + ${product.id}">
+						<button type="button">
+				DELETE
+						</button>
+					</a>
+					
+					<a th:href="'/th/edit/' + ${product.id}">
+						<button type="button">
+				EDIT
+						</button>
+					</a>
+					
+				</td>
+			</tr>
+		</th:block>
+	</table>
+</body>
+
+</html>
